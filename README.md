@@ -1,5 +1,7 @@
-# Auto Hub Car Buy and Sell Web Application
-Auto Hub buy and sell cars web application project built with React and Laravel.
+<h1 align="center">Auto Hub – Car Buy and Sell App</h1>
+<div align="center">
+  <i>Auto Hub car buy and sell web app project built with React and Laravel.</i>
+</div>
 
 ![repo cover image](./public/img/repo-cover.webp)
 
