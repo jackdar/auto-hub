@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,15 +34,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/browse', function () {
-    return Inertia::render('Browse/Browse', [
-        'listings' => DB::table('listings')->paginate(24),
-    ]);
+    return Inertia::render('Browse/Browse');
 })->name('browse');
 
 Route::get('/browse/{listingId}', function ($listingId) {
-    return Inertia::render('Browse/Listing', [
-        'listing' => DB::table('listings')->where('id', $listingId)->first(),
-    ]);
+    return Inertia::render('Browse/Listing');
 })->name('listing');
 
 require __DIR__.'/auth.php';
