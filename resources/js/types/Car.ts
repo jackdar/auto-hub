@@ -1,15 +1,31 @@
-export type Car = {
+type BodyType =
+  | 'sedan'
+  | 'hatchback'
+  | 'suv'
+  | 'crossover'
+  | 'coupe'
+  | 'convertible'
+  | 'wagon'
+  | 'van'
+  | 'ute';
+
+type Transmission = 'manual' | 'automatic';
+
+type FuelType = 'petrol' | 'diesel' | 'electric' | 'hybrid';
+
+export interface Car {
   id: number;
   make: string;
   model: string;
   variant: string;
   year: number;
-  bodyType: string;
-  transmission: string;
+  body_type: BodyType;
+  transmission: Transmission;
   odometer: number;
-  fuelType: string;
+  fuel_type: FuelType;
   seats: number;
   doors: number;
   colour: string;
-  engineSize: number;
-};
+  created_at: string;
+  updated_at: string;
+}
