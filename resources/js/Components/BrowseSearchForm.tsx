@@ -27,7 +27,12 @@ export default function BrowseSearchForm({
   };
 
   return (
-    <div className={cn('border-b border-stone-200 px-4 pb-6', className)}>
+    <div
+      className={cn(
+        'border-b border-stone-200 bg-stone-50 px-4 pb-6 dark:border-stone-800 dark:bg-stone-950 md:px-6 lg:px-12 lg:pb-12',
+        className,
+      )}
+    >
       <form onSubmit={submit} className='flex w-full flex-col gap-y-6'>
         <div className='grid grid-cols-3 grid-rows-2 gap-4'>
           <div className='relative col-span-3 w-full'>

@@ -8,13 +8,19 @@ import {
   CarouselPrevious,
 } from '@/Components/ui/carousel';
 import MainLayout from '@/Layouts/MainLayout';
+import { PaginatedData } from '@/types';
+import { ListingDto } from '@/types/listing/listing.dto';
 import { Head } from '@inertiajs/react';
 
-export default function Home() {
+export default function Home({
+  listings,
+}: {
+  listings: PaginatedData<ListingDto>;
+}) {
   return (
     <MainLayout>
       <Head title='Home' />
-      <section id='hero' className='relative mb-20 flex'>
+      <section id='hero' className='relative mb-16 flex'>
         <img
           src='/img/bg.webp'
           alt='background'
@@ -38,47 +44,13 @@ export default function Home() {
             className='mt-4 w-full'
           >
             <CarouselContent>
-              {Array.from({ length: 5 }).map((_, index) => (
+              {listings.data.map((listing, index) => (
                 <CarouselItem key={index} className='basis-[1]'>
                   <div className='p-1'>
                     <ListingCard
                       key={index}
-                      listing={{
-                        id: 1,
-                        userId: 1,
-                        user: {
-                          id: 1,
-                          first_name: 'John',
-                          last_name: 'Doe',
-                          email: 'john@doe.com',
-                        },
-                        carId: 1,
-                        car: {
-                          id: 1,
-                          make: 'Toyota',
-                          model: 'Corolla',
-                          variant: 'GLX',
-                          year: 2019,
-                          bodyType: 'Sedan',
-                          transmission: 'Automatic',
-                          odometer: 50000,
-                          fuelType: 'Petrol',
-                          seats: 5,
-                          doors: 4,
-                          colour: 'White',
-                          engineSize: 1800,
-                        },
-                        area: 'North Shore',
-                        region: 'Auckland',
-                        images: ['/img/corolla.webp'],
-                        price: 25000,
-                        new_or_used: 'Used',
-                        contact_email: 'blah',
-                        contact_phone: '0211234567',
-                        status: 'active',
-                        createdAt: '2021-01-01',
-                        updatedAt: '2021-01-01',
-                      }}
+                      listing={listing}
+                      images={['/img/corolla.webp']}
                     />
                   </div>
                 </CarouselItem>

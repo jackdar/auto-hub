@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\ListingResource;
+use App\Models\Listing;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,6 +29,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', function () {
     return Inertia::render('Home', [
+        'listings' => ListingResource::collection(
+            Listing::query()
+                ->where('status', 'active')
+                ->orderBy('created_at', 'desc')
+                ->paginate(6)
+        ),
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -33,12 +42,9 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/browse', function () {
-    return Inertia::render('Browse/Browse');
-})->name('browse');
-
-Route::get('/browse/{listingId}', function ($listingId) {
-    return Inertia::render('Browse/Listing');
-})->name('listing');
+Route::prefix('browse')->group(function () {
+    Route::get('/', [ListingController::class, 'index'])->name('browse');
+    Route::get('/{listingId}', [ListingController::class, 'show'])->name('browse.show');
+});
 
 require __DIR__.'/auth.php';

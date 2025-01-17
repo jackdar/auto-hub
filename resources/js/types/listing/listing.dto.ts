@@ -1,14 +1,13 @@
-export interface Listing {
+import { CarDto } from '../car/car.dto';
+
+export interface ListingDto {
   id: number;
-  userId: number;
-  carId: number;
+  car: CarDto;
   area: string;
   region: string;
   description: string;
   price: number;
   contact_email: string;
   contact_phone: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
 }

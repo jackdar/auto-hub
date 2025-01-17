@@ -17,13 +17,14 @@ return new class extends Migration
             $table->string('model');
             $table->string('variant');
             $table->integer('year');
-            $table->enum('body_type', ['sedan', 'hatchback', 'suv', 'crossover', 'coupe', 'convertible', 'wagon', 'van', 'ute']);
-            $table->enum('transmission', ['manual', 'automatic']);
+            $table->enum('body_type', ['Sedan', 'Hatchback', 'Suv', 'Crossover', 'Coupe', 'Convertible', 'Wagon', 'Van', 'Ute']);
+            $table->enum('transmission', ['Manual', 'Automatic']);
             $table->bigInteger('odometer');
-            $table->enum('fuel_type', ['petrol', 'diesel', 'electric', 'hybrid']);
+            $table->enum('fuel_type', ['Petrol', 'Diesel', 'Electric', 'Hybrid']);
             $table->integer('seats');
             $table->integer('doors');
             $table->string('colour');
+            $table->integer('engine_size');
             $table->timestamps();
         });
     }

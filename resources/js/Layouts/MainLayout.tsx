@@ -12,8 +12,8 @@ export default function MainLayout({ children }: PropsWithChildren) {
 
   return (
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-      <div className='flex min-h-screen flex-col bg-stone-50 dark:bg-stone-950'>
-        <header className='grid h-20 w-full shrink-0 grid-cols-3 items-center justify-between px-4 md:px-6 lg:flex'>
+      <div className='flex min-h-screen flex-col bg-stone-100 dark:bg-stone-900'>
+        <header className='grid h-20 w-full shrink-0 grid-cols-3 items-center justify-between bg-stone-50 px-4 dark:bg-stone-950 md:px-8 lg:flex lg:p-12'>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant='outline' size='icon' className='lg:hidden'>
@@ -47,7 +47,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
           </Sheet>
           <Link
             href={route('home')}
-            className='mx-auto text-center text-2xl font-bold lg:ml-6 lg:mr-20'
+            className='mx-auto text-center text-2xl font-bold lg:ml-0 lg:mr-20'
           >
             Auto Hub
             <span className='sr-only'>Auto Hub</span>
@@ -61,7 +61,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
           </nav>
 
           {user ? (
-            <Link href={route('profile.edit')} className='ml-auto mr-2'>
+            <Link href={route('profile.edit')} className='ml-auto'>
               <Avatar>
                 <AvatarImage
                   src={user.email}
