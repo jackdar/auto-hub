@@ -8,15 +8,24 @@ import {
   CarouselPrevious,
 } from '@/Components/ui/carousel';
 import MainLayout from '@/Layouts/MainLayout';
-import { PaginatedData } from '@/types';
+import { PageProps, PaginatedData } from '@/types';
 import { ListingDto } from '@/types/listing/listing.dto';
 import { Head } from '@inertiajs/react';
 
+// export default function Home({
+//   auth,
+//   listings,
+// }: {
+//   listings: PaginatedData<ListingDto>;
+// }) {
+
 export default function Home({
   listings,
-}: {
+}: PageProps<{
+  laravelVersion: string;
+  phpVersion: string;
   listings: PaginatedData<ListingDto>;
-}) {
+}>) {
   return (
     <MainLayout>
       <Head title='Home' />
